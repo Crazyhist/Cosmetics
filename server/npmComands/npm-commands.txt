@@ -1,0 +1,5 @@
+1. npm init -y
+2. npm install express pg pg-hstore sequelize cors dotenv
+3. npm i express-fileupload
+4. npm i uuid
+5. npm i jsonwebtoken bcrypt //токены для пользователей и хеширование пароли чтобы не хранить в бд
