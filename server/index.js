@@ -8,7 +8,7 @@ const router = require('./routes/index')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 const path = require('path')
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5001 //узнать почему не работает при 5000
 
 const app = express() // с него начинается запуск нашего приложения
 app.use(cors())
