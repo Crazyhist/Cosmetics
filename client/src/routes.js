@@ -28,7 +28,7 @@ export const publicRoutes = [
     },
     {
         path: REGISTRATION_ROUTE,
-        Component: Admin
+        Component: Auth
     },
     {
         path: COSMETIC_ROUTE + '/:id',
