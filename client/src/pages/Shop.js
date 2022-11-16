@@ -6,6 +6,7 @@ import CosmeticList from "../components/CosmeticList";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {fetchBrands, fetchCosmetics, fetchTypes} from "../http/cosmeticAPI";
+import Pages from "../components/Pages";
 
 const Shop = observer(() => {
     const {cosmetic} = useContext(Context)
@@ -13,8 +14,18 @@ const Shop = observer(() => {
     useEffect(() => {
         fetchTypes().then(data => cosmetic.setTypes(data))
         fetchBrands().then(data => cosmetic.setBrands(data))
-        fetchCosmetics().then(data => cosmetic.setCosmetics(data.rows))
+        fetchCosmetics(null, null, 1, 2).then(data => {
+            cosmetic.setCosmetics(data.rows)
+            cosmetic.setTotalCount(data.count)
+        })
     }, [])
+
+    useEffect(() => {
+        fetchCosmetics(cosmetic.selectedType.id, cosmetic.selectedBrand.id, cosmetic.page, 2).then(data => {
+            cosmetic.setCosmetics(data.rows)
+            cosmetic.setTotalCount(data.count)
+        })
+    }, [cosmetic.page, cosmetic.selectedType, cosmetic.selectedBrand,])
 
     return (
         <Container>
@@ -25,6 +36,7 @@ const Shop = observer(() => {
                 <Col md={9}>
                     <BrandBar/>
                     <CosmeticList/>
+                    <Pages/>
                 </Col>
             </Row>
         </Container>

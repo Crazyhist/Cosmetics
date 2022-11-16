@@ -7,6 +7,9 @@ export default class CosmeticStore {
         this._cosmetics = []
         this._selectedType = {}
         this._selectedBrand = {}
+        this._page = 1
+        this._totalCount = 0
+        this._limit = 3
         makeAutoObservable(this)
     }
 
@@ -21,10 +24,18 @@ export default class CosmeticStore {
         this._cosmetics = cosmetics
     }
     setSelectedType(type) {
+        this.setPage(1)
         this._selectedType = type
     }
     setSelectedBrand(brand) {
+        this.setPage(1)
         this._selectedBrand = brand
+    }
+    setPage(page) {
+        this._page = page
+    }
+    setTotalCount(count) {
+        this._totalCount = count
     }
 
     get types() {
@@ -41,5 +52,14 @@ export default class CosmeticStore {
     }
     get selectedBrand() {
         return this._selectedBrand
+    }
+    get totalCount() {
+        return this._totalCount
+    }
+    get page() {
+        return this._page
+    }
+    get limit() {
+        return this._limit
     }
 }

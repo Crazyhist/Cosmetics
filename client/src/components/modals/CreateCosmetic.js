@@ -14,7 +14,6 @@ import {observer} from "mobx-react-lite";
 
 const CreateCosmetic = observer(({show, onHide}) => {
     const {cosmetic} = useContext(Context)
-
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [file, setFile] = useState(null)
@@ -39,6 +38,7 @@ const CreateCosmetic = observer(({show, onHide}) => {
     }
 
     const selectFile = e => {
+        // console.log(e.target.files)
         setFile(e.target.files[0])
     }
 
@@ -109,6 +109,7 @@ const CreateCosmetic = observer(({show, onHide}) => {
                         <Form.Control
                             value={price}
                             onChange={e => setPrice(Number(e.target.value))}
+                            // onChange={setFile}
                             className='mt-3'
                             placeholder='Введите стоимость косметики'
                             type='number'
