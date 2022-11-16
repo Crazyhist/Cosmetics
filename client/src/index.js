@@ -5,7 +5,7 @@ import UserStore from "./store/UserStore";
 import CosmeticStore from "./store/CosmeticStore";
 
 export const Context = createContext(null)
-
+console.log(process.env.REACT_APP_API_URL)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

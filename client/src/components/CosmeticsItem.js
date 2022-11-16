@@ -7,12 +7,12 @@ import {useNavigate, useLocation, useHistory, useRoutes, Link} from 'react-route
 
 const CosmeticsItem = ({cosmetic}) => {
     const navigate = useNavigate()
-    console.log(navigate)
+    // console.log(navigate)
     return (
         <Col md={3} className={'mt-3'}>
             <Card style={{width: 150, cursor: 'pointer'}} border={'light'}>
                 <Link style={{ textDecoration: 'none' }} to={COSMETIC_ROUTE + '/' + cosmetic.id}>
-                    <Image width={150} height={150} src={cosmetic.img}/>
+                    <Image width={150} height={150} src={process.env.REACT_APP_API_URL + cosmetic.img}/>
                     <div className='text-black-50 mt-1 d-flex justify-content-between align-items-center'>
                         <div>Epica...</div>
                         <div className='d-flex align-items-center'>
